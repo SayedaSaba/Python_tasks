@@ -1,0 +1,178 @@
+1.'Which if does the else belong to? Explain why.'
+if True:
+ if False:
+    print("A")
+ else:
+    print("B")
+
+'''Its showing syntax error due to wrong indentation.
+If we correct the indentation then the else belongs to the inner if , as else is indented at the same level as the inner if.
+'''
+
+2.
+'What’s the output? explain'
+
+def foo():
+    print("foo")
+    return False
+def bar():
+    print("bar")
+    return True
+
+if foo() and bar():
+    print("Hello")
+
+'It checks foo first and it prints foo and returns false value , it doesnot checks bar and doesnot print hello as we are using 'and' operator'
+
+3.
+
+What happens if you modify the loop variable inside a for loop?
+for i in range(5):
+    print(i)
+    if i == 2:
+        i += 1
+'''The loop gives values from range(5), Even if we change i inside the loop, Python doesnot see it or ignores it.
+         The loop still follows the original numbers and the output remains the same'''
+
+4.
+
+Suppose you have a list of tuples and a set. How would you find all tuples where the first element exists in the set?
+Example:
+tuples_list = [ (1, "a"), (2, "b"), (3, "c"), (1, "d") ]  
+target_set = {1, 3}  
+
+
+tuples_list = [ (1, "a"), (2, "b"), (3, "c"), (1, "d") ]  
+target_set = {1, 3}
+
+for t in tuples_list:
+    if t[0] in target_set:
+        print(t)
+
+5. Can a set contain tuples that themselves contain mutable elements (like lists)? If not, how can you modify such a tuple to make it hashable and storable in a set?
+What happens if you try to create a set like this:
+my_set = { (1, [2, 3]) }  
+
+my_set = {(1,(2,3))}
+print(my_set)
+
+
+6. This loop runs infinitely. Why?
+x = 1.0
+while x != 1.5:
+    print(x)
+    x += 0.1
+
+''' the condition is always true as x never becomes exactly 1.5 because the computer reads 1.10000000000 like this something '''
+
+
+
+7. Convert this loop into a single line using list comprehension:
+squares = []
+for i in range(10):
+    if i % 2 == 0:
+        squares.append(i ** 2)
+
+squares = [i ** 2 for i in range(10) if i % 2 == 0]
+print(squares)
+
+
+8. Given a nested list l = [1, [2, [3, 4], 5], 6], write code to access and print the number 4.
+
+l=[1,[2,[3,4],5],6]
+print(((l[1])[1])[1])
+
+9. Given a list of integers, write a function to return a new list containing only the prime numbers from the original list.
+
+def get_primes(num):
+    primes = []
+    for n in num:
+        if n < 2:
+            continue
+        for i in range(2, n):
+            if n % i == 0:
+                break
+        else:
+            primes.append(n)
+    return primes
+l=[1,2,3,4,5,6,7,8,9,997,47,37]
+print(get_primes(l))
+
+
+10. Given a list l = [10, 20, 30, 40, 50], write a program that removes the middle element (or elements if the length is even).
+
+l = [10, 20, 30, 40, 50]  
+
+length = len(l)
+middle = length // 2
+
+if length % 2 == 1:
+    midvalue = l[middle]
+    l.remove(midvalue)
+else:
+    midvalue1 = l[middle]
+    midvalue2 = l[middle - 1]
+    l.remove(midvalue1)
+    l.remove(midvalue2)
+
+print(l)
+
+
+11. Without using slicing ([::-1]) or the reverse() method, reverse the list l = [5, 6, 7, 8, 9] using a loop or logic.
+
+ l = [5, 6, 7, 8, 9]
+reversed_list = []
+for i in range(len(l)-1,-1,-1):
+    reversed_list.append(l[i])
+
+    
+12. Write a function to check if a string is a palindrome without using slicing or Python built-ins that reverse strings.
+
+def palindrome(s):
+    for i in range(len(s) // 2):
+        if s[i] != s[len(s) - 1 - i]:
+            return False
+    return True
+
+word = input("Enter a word: ")
+
+if palindrome(word):
+    print("It's a palindrome!")
+else:
+    print("Not a palindrome.")
+
+13. Create a 5×5 NumPy array of random integers (1 to 100). Replace all even numbers in the array with 0.
+
+import numpy as np
+
+arr = np.random.randint(1,101,size=(5,5))
+arr[arr%2==0]=0
+print(arr)
+
+14. Create two 3×3 NumPy arrays with random integers. Write code to check and return a boolean array showing element-wise equality.
+
+import numpy as np
+
+arr1 = np.random.randint(1,11,size=(3,3))
+arr2 = np.random.randint(1,11,size=(3,3))
+
+comparison_result = arr1 == arr2
+
+print("Array 1:\n", arr1)
+print("Array 2:\n", arr2)
+print("Element-wise Equality:\n", comparison_result)
+
+
+15. Given a 2D NumPy array a = np.array([[45, 60], [30, 80]]), replace all values greater than 50 with 100 and calculate the mean of each column.
+
+import numpy as np
+
+a = np.array([[45, 60], [30, 80]])
+a[a > 50] = 100
+meanvalue = np.mean(a, axis=0)
+
+print("Modified array:\n", a)
+print("Mean of each column:", meanvalue)
+
+
+
